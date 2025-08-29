@@ -1,0 +1,13 @@
+{
+  "generators": [
+    {
+      "name": "Hibernate Entity Generator",
+      "orm": "hibernate",
+      "databases": ["mysql"],
+      "version": "1.0.0",
+      "path": "/entities/hibernate/hibernate-mysql.py",
+      "description": "JPA entities for Hibernate.",
+      "icons": ["icons/hibernate.svg", "icons/mysql.svg"]
+    }
+  ]
+}
