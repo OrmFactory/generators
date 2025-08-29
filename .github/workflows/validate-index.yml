@@ -1,0 +1,24 @@
+name: Validate Generator Index
+
+on:
+  push:
+    paths:
+      - "entity-index.json"
+      - "migration-index.json"
+      - "generator-index.schema.json"
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ajv-cli
+        run: npm install -g ajv-cli
+
+      - name: Validate entity-index.json
+        run: ajv validate -s generator-index.schema.json -d entity-index.json --strict=false
+
+      - name: Validate migration-index.json
+        run: ajv validate -s generator-index.schema.json -d migration-index.json --strict=false

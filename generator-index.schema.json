@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OrmFactory Generator Index",
+  "type": "object",
+  "properties": {
+    "generators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "orm", "databases", "version", "path", "description", "icons"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "orm": { "type": "string", "minLength": 1 },
+          "databases": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "version": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "description": { "type": "string" },
+          "icons": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["generators"],
+  "additionalProperties": false
+}
