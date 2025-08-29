@@ -72,17 +72,11 @@ Each generator is a standalone Python script and must be described in the approp
 
 1. **Place your script**
    - Put your Python file under the corresponding directory:
-     - `entity-generators/` — for entity (model) code generators.
-     - `migration-generators/` — for migration generators.
+     - `entities/` — for entity (model) code generators.
+     - `migration/` — for migration generators.
 
 2. **Add metadata**
-   - Update the correct index file (`entity-generators/index.json` or `migration-generators/index.json`).
-   - **Fields explained**:
-     - `name` — Human-readable name of the generator.
-     - `description` — Short explanation of what it does.
-     - `databases` — Array of supported databases (PostgreSQL, MySQL, SQL Server, Oracle).
-     - `script` — Relative path to the script inside the repo.
-     - `icons` — (Optional) Array of relative paths to SVG icons.
+   - Update the correct index file (`entity-index.json` or `migration-index.json`).
 
 3. **Open a Pull Request**
    - Describe what your generator does and provide examples if possible.
