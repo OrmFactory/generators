@@ -17,6 +17,6 @@
       "path": "/entities/django/django-mysql.py",
       "description": "Django entities generator for MySql",
       "icons": ["icons/django.svg", "icons/mysql.svg"]
-    },
+    }
   ]
 }
