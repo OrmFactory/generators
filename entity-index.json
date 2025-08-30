@@ -8,6 +8,15 @@
       "path": "/entities/hibernate/hibernate-mysql.py",
       "description": "JPA entities for Hibernate.",
       "icons": ["icons/hibernate.svg", "icons/mysql.svg"]
-    }
+    },
+	{
+      "name": "Django Model Generator",
+      "orm": "django",
+      "databases": ["mysql"],
+      "version": "1.0.0",
+      "path": "/entities/django/django-mysql.py",
+      "description": "Django entities generator for MySql",
+      "icons": ["icons/django.svg", "icons/mysql.svg"]
+    },
   ]
 }
