@@ -9,9 +9,13 @@ ROOT_PATH = "models.py"
 
 def resolve_type(column: ET.Element) -> str:
     args = []
+    column_name = column.get("Name")
+    args.append("db_column=\"" + column_name + "\"")
     db_type = column.get("DatabaseType").lower()
     if column.get("Nullable", "false").lower() == "true":
         args.append("null=True")
+    if column.get("PrimaryKey", "false").lower() == "true":
+        args.append("primary_key=True")
 
     db_type_args = []
     if "(" in db_type:
@@ -20,7 +24,7 @@ def resolve_type(column: ET.Element) -> str:
 
     if db_type.startswith("tinyint(1)"):
         return f"models.BooleanField({", ".join(args)})"
-    if db_type.startswith("tinyint"):
+    if db_type.startswith("tinyint") or db_type.startswith("smallint"):
         return f"models.SmallIntegerField({", ".join(args)})"
     if db_type.startswith("int") or db_type.startswith("mediumint"):
         return f"models.IntegerField({", ".join(args)})"
@@ -38,7 +42,7 @@ def resolve_type(column: ET.Element) -> str:
         precision = 20
         scale = 6
         if len(db_type_args) == 2:
-            precision, scale = map(str.strip, db_type_args)
+            precision, scale = db_type_args
         args.append(f"max_digits=" + precision.strip())
         args.append(f"decimal_places=" + scale.strip())
         return f"models.DecimalField({", ".join(args)})"
@@ -80,11 +84,35 @@ def generate_table(table: ET.Element) -> str:
 
     # Foreign keys
     for fk in table.findall("ForeignKey"):
+        column_name = fk.get("FromColumn")
         field_name = fk.get("FieldName")
         target_class = fk.get("ToClassName")
-        nullable = fk.get("Nullable", "false").lower() == "true"
-        nullopt = ", null=True" if nullable else ""
-        lines.append(f"{INDENT}{field_name} = models.ForeignKey('{target_class}', on_delete=models.CASCADE{nullopt})")
+        on_delete_sql = fk.get("OnDelete", "NO ACTION")
+        column = next((c for c in table.findall("Column") if c.get("Name") == column_name), None)
+        
+        args = [f"db_column=\"" + column_name + "\""]
+        if column.get("Nullable", "false").lower() == "true":
+            args.append("null=True")
+
+        action_map = {
+            "CASCADE": "models.CASCADE",
+            "SET NULL": "models.SET_NULL",
+            "SET DEFAULT": "models.SET_DEFAULT",
+            "RESTRICT": "models.RESTRICT",
+            "NO ACTION": "models.DO_NOTHING"
+        }
+
+        on_delete = action_map.get(on_delete_sql, "models.DO_NOTHING")
+
+        args_str = ", ".join(args)
+
+        lines.append(
+            f"{INDENT}{field_name} = models.ForeignKey('{target_class}', on_delete={on_delete}, {args_str})")
+
+    table_name = table.get("Name")
+    lines.append("")
+    lines.append(f"{INDENT}class Meta:")
+    lines.append(f"{INDENT*2}db_table = \"{table_name}\"")
 
     lines.append("")
     return NEWLINE.join(lines)
