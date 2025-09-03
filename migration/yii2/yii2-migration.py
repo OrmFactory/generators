@@ -1,6 +1,4 @@
-# This code is dedicated to the public domain under CC0 1.0.
-# You may use it freely for any purpose. No warranty is provided.
-# https://creativecommons.org/publicdomain/zero/1.0/
+# Licensed under the MIT License (MIT)
 
 import os
 import sys

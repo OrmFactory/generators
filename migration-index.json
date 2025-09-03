@@ -8,6 +8,15 @@
       "path": "/migration/yii2/yii2-mysql.py",
       "description": "Yii2 migrations Generator for MySql.",
       "icons": ["icons/yii.svg", "icons/mysql.svg"]
+    },
+    {
+      "name": "Laravel migrations Generator",
+      "orm": "Laravel",
+      "databases": ["mysql"],
+      "version": "1.0.0",
+      "path": "/migration/laravel/laravel-mysql.py",
+      "description": "Laravel migrations Generator for MySql.",
+      "icons": ["icons/laravel.svg", "icons/mysql.svg"]
     }
   ]
 }
