@@ -1,3 +1,13 @@
 {
-  "generators": []
+  "generators": [
+    {
+      "name": "Yii2 migrations Generator",
+      "orm": "Yii2",
+      "databases": ["mysql"],
+      "version": "1.0.0",
+      "path": "/migration/yii2/yii2-mysql.py",
+      "description": "Yii2 migrations Generator for MySql.",
+      "icons": ["icons/yii.svg", "icons/mysql.svg"]
+    }
+  ]
 }
