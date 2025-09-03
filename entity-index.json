@@ -9,7 +9,7 @@
       "description": "JPA entities for Hibernate.",
       "icons": ["icons/hibernate.svg", "icons/mysql.svg"]
     },
-	{
+    {
       "name": "Django Model Generator",
       "orm": "django",
       "databases": ["mysql"],
@@ -17,6 +17,15 @@
       "path": "/entities/django/django-mysql.py",
       "description": "Django entities generator for MySql",
       "icons": ["icons/django.svg", "icons/mysql.svg"]
+    },
+    {
+      "name": "Entity Framefork Core",
+      "orm": "efcore",
+      "databases": ["mysql"],
+      "version": "1.0.0",
+      "path": "/entities/ef/ef-mysql.py",
+      "description": "Entity Framefork Core entities generator for MySql",
+      "icons": ["icons/c_sharp.svg", "icons/mysql.svg"]
     }
   ]
 }
