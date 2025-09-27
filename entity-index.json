@@ -26,6 +26,15 @@
       "path": "/entities/ef/ef-mysql.py",
       "description": "Entity Framefork Core entities generator for MySql",
       "icons": ["icons/c_sharp.svg", "icons/mysql.svg"]
+    },
+    {
+      "name": "Dapper Entity Generator",
+      "orm": "dapper",
+      "databases": ["mysql"],
+      "version": "1.0.0",
+      "path": "/entities/dapper/dapper-mysql.py",
+      "description": "Dapper entity and mapping generator for MySql",
+      "icons": ["icons/dapper.svg", "icons/mysql.svg"]
     }
   ]
 }
