@@ -10,6 +10,15 @@
       "icons": ["icons/hibernate.svg", "icons/mysql.svg"]
     },
     {
+      "name": "JOOQ Table Class Generator",
+      "orm": "jooq",
+      "databases": ["mysql"],
+      "version": "1.0.0",
+      "path": "/entities/jooq/jooq-mysql.py",
+      "description": "JOOQ Table Class Generator",
+      "icons": ["icons/jooq.svg", "icons/mysql.svg"]
+    },
+    {
       "name": "Django Model Generator",
       "orm": "django",
       "databases": ["mysql"],
