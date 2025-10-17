@@ -57,7 +57,6 @@ def get_class_lines(table: ET.Element):
         yield f"/// <summary>"
         yield f"///{table_comment}"
         yield f"/// </summary>"
-    #if table_name != class_name:
     yield f"[Table(\"{table_name}\")]"
     yield f"public partial class {class_name}"
     yield "{"
